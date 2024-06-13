@@ -7,9 +7,8 @@ import streamlit as st
 import base64
 
 # Define working directory and paths
-working_dir = "C:/Users/DELL/Desktop"
-model_path = r"C:/Users/DELL/Desktop/plant-disease-prediction/plant_disease_prediction_model.h5"
-class_indices_path = os.path.join(working_dir, "class_indices.json")
+model_path = r"C:/Users/DELL/Desktop/plant-disease-prediction/app/plant_disease_prediction_model .h5"
+class_indices_path = r"C:/Users/DELL/Desktop/plant-disease-prediction/app/class_indices.json"
 
 # Load the pre-trained model
 model = tf.keras.models.load_model(model_path)
@@ -64,12 +63,17 @@ def set_background_image(image_path):
         }}
         .stTitle {{
             font-family: "Arial Black", Gadget, sans-serif;
-            color: #00FF00;  /* Neon green color */
+            color: black;  /* Black color for title */
         }}
         .stFileUploader label {{
-            color: #FF00FF;  /* Neon pink color */
+            color: #FFD700;  /* Gold color */
             font-size: 16px;
             font-family: Arial, sans-serif;
+        }}
+        .stSuccess {{
+            color: black;  /* Black color for output */
+            font-size: 24px;  /* Increase the size of the output text */
+            font-weight: bold;  /* Make the text bold */
         }}
         </style>
         """,
@@ -77,7 +81,7 @@ def set_background_image(image_path):
     )
 
 # Set local background image
-set_background_image(r"C:/Users/DELL/Desktop/app/Screenshot 2024-06-06 183759.png")
+set_background_image(r"C:/Users/DELL/Desktop/plant-disease-prediction/app/Screenshot 2024-06-06 185644.png")
 
 # Streamlit App
 st.markdown('<h1 class="stTitle">Plant Disease Classifier</h1>', unsafe_allow_html=True)
@@ -89,7 +93,7 @@ if uploaded_image is not None:
     col1, col2 = st.columns(2)
 
     with col1:
-        resized_img = image.resize((150, 150))
+        resized_img = image.resize((300, 300))  # Increase the size of the uploaded image
         st.image(resized_img)
 
     with col2:
@@ -100,7 +104,7 @@ if uploaded_image is not None:
             
             # Preprocess the uploaded image and predict the class
             prediction = predict_image_class(model, "temp_image.png", class_indices)
-            st.success(f'Prediction: {str(prediction)}')
+            st.markdown(f'<p class="stSuccess">Prediction: {str(prediction)}</p>', unsafe_allow_html=True)
             
             # Optionally, remove the temporary file after prediction
             os.remove("temp_image.png")
