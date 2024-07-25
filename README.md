@@ -1,4 +1,4 @@
-# Plant Disease Detection App
+# PlantCare: Plant Disease Detection App
 
 This repository contains the code for a Plant Disease Detection App, a machine learning project that uses a Convolutional Neural Network (CNN) to detect various plant diseases from images. This app aims to help farmers and gardeners quickly identify and address plant health issues.
 
