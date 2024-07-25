@@ -84,7 +84,7 @@ def set_background_image(image_path):
 set_background_image(r"C:/Users/DELL/Desktop/plant-disease-prediction/app/Screenshot 2024-06-06 185644.png")
 
 # Streamlit App
-st.markdown('<h1 class="stTitle">Plant Disease Classifier</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="stTitle">PlantCare: Plant Disease Classifier</h1>', unsafe_allow_html=True)
 
 uploaded_image = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
 
